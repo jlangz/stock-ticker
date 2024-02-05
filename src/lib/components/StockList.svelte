@@ -168,7 +168,7 @@
   td:not(:last-child){
     border-right: 1px solid #ddd;
   }
-  td.clickable{
+  td.clickable, thead th{
     cursor: pointer;
     text-decoration: underline;
   }
