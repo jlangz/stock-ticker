@@ -89,7 +89,7 @@
     </thead>    
     <tbody>
       {#each sortedStocks as stock (stock.id)}
-        <tr transition:slide>
+        <tr transition:slide >
           <td class="clickable" on:click={() => toggleDetails(stock.symbol)}>{stock.symbol}</td>
           <td>{stock.name}</td>
           <td style="color: {getColor(stock.change)}">{stock.change.toFixed(2)} ({stock.changesPercentage.toFixed(2)}%)</td>

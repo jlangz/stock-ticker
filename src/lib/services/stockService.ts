@@ -10,9 +10,9 @@ export const getMostMovingStocks = async (): Promise<void> => {
   try {
     const response = await fetch(`${API_URL}?apikey=${API_KEY}`);
     if (!response.ok) {
-      throw new Error(`Status: ${response.status}, ${
-        response.statusText ? response.statusText : 'No description'
-      }`);
+      const errorResponse = await response.json();
+      const errorMessage = `HTTP Error: ${response.status} . ${errorResponse["Error Message"]}` || `HTTP Error: ${response.status} ${response.statusText}`;
+      throw new Error(errorMessage);
     }
     let data: Stock[] = await response.json();
     data = data.map(stock => ({ ...stock, id: uuidv4() }));
