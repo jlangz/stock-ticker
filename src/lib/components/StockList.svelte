@@ -137,8 +137,8 @@
     width: 100%;
   }
   thead tr{
-    background-color: #262626;
-    color: rgb(253, 188, 102);
+    background-color: var(--secondary-background-color);
+    color: var(--highlight-color);
   }
   th:not(:last-child){
     border-right: 1px solid #ddd;
@@ -159,7 +159,7 @@
     border-bottom: 1px solid #ddd;
   }
   tr:not(.detail-row):nth-child(even) {
-    background-color: #323232;
+    background-color: var(--secondary-background-color);
   }
   td, th{
     text-align: left;
@@ -168,7 +168,7 @@
   td:not(:last-child){
     border-right: 1px solid #ddd;
   }
-  td.clickable, thead th{
+  td.clickable, thead{
     cursor: pointer;
     text-decoration: underline;
   }
