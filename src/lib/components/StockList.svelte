@@ -5,6 +5,7 @@
   import type { Stock } from '../types/Stock';
   import { getMostMovingStocks } from '../services/stockService';
   import StockGraph from './StockGraph.svelte';
+  import { slide } from 'svelte/transition';
 
   onMount(async () => {
     getMostMovingStocks();
@@ -88,14 +89,14 @@
     </thead>    
     <tbody>
       {#each sortedStocks as stock (stock.id)}
-        <tr>
+        <tr transition:slide>
           <td class="clickable" on:click={() => toggleDetails(stock.symbol)}>{stock.symbol}</td>
           <td>{stock.name}</td>
           <td style="color: {getColor(stock.change)}">{stock.change.toFixed(2)} ({stock.changesPercentage.toFixed(2)}%)</td>
           <td>{stock.price.toFixed(2)}</td>
         </tr>
         {#if detailsShown === stock.symbol}
-          <tr class="detail-row">
+          <tr class="detail-row" transition:slide>
             <td colspan="5">
               <div class="detail-content">
                 <p>Performance for {stock.symbol} over the last 30 days.</p>
@@ -119,7 +120,7 @@
   }
   .detail-row{
     background-color: #262626;
-    transition: all ease-in-out 0.5s;
+    
   }
   .loading{
     text-align: center;

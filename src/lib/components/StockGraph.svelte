@@ -4,6 +4,7 @@
   import Chart from 'chart.js/auto';
   export let symbol: string;
   import type { HistoricalData } from '../types/HistoricalData';
+  import { fade } from 'svelte/transition';
 
   let performanceData: HistoricalData[] = [];
   let error: string | null = null;
@@ -74,7 +75,7 @@
 {:else if error}
   <p>{error}</p>
 {:else if performanceData.length > 0}
-  <div class="chart-container">
+  <div class="chart-container" transition:fade>
     <canvas bind:this={chartElement}></canvas>
   </div>
 {:else}
